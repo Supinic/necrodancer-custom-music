@@ -10,6 +10,7 @@ CLI tool used to import custom music into Crypt of the Necrodancer without being
 Remarks:
 - audio files are stored in `./music/`; the game is directed to use them here 
 - beat map files are stored in `(game-dir)/data/custom_music/` 
+- ⚠ the file seems to be stored in the game's memory as it is running, and is re-generated whenever some actions are taken (e.g.: starting a run, changing the music settings manually, advancing to a new floor?)
 
 ## Usage
 - clone/fork the repo
