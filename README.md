@@ -16,6 +16,7 @@ Remarks:
 - run `npm` or `yarn`
 - run `npm run init` or `yarn run init`
 - edit `config.json` and fill in the `directory` property with your Crypt of the Necrodancer install directory
+- make sure to back up your game save file before proceeding - in case it needs to be rolled back
 - run script with `node ./index.js` or `./index.js` (with shebang)
 
 ### Arguments
