@@ -7,7 +7,7 @@ CLI tool used to import custom music into Crypt of the Necrodancer without being
 3) Beat-map the audio file with `beattracker` based on `essentia` (shipped with the game on Windows); alternatively, use a static beats-per-minute value
 4) Edit the game's save-file (`xml`) and add the song in 
 
-### Usage
+## Usage
 - clone/fork the repo
 - run `npm` or `yarn`
 - run `npm run init` or `yarn run init`
