@@ -2,10 +2,14 @@
 CLI tool used to import custom music into Crypt of the Necrodancer without being in-game.
 
 ## Rundown
-1) Download the provided media URL with `youtube-dl`
-2) Convert the media to `MP3` format with `ffmpeg` or any other valid converter
-3) Beat-map the audio file with `beattracker` based on `essentia` (shipped with the game on Windows); alternatively, use a static beats-per-minute value
-4) Edit the game's save-file (`xml`) and add the song in 
+1) Downloads the provided media URL with `youtube-dl`
+2) Converts the media to `MP3` format with `ffmpeg` or any other valid converter
+3) Beat-maps the audio file with `beattracker` based on `essentia` (shipped with the game on Windows); alternatively, uses a static beats-per-minute value
+4) Edits the game's save-file (`xml`) and add the song in
+
+Remarks:
+- audio files are stored in `./music/`; the game is directed to use them here 
+- beat map files are stored in `(game-dir)/data/custom_music/` 
 
 ## Usage
 - clone/fork the repo
