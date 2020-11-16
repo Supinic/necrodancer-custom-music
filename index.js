@@ -20,7 +20,6 @@
 			return null;
 		}
 	};
-	const saveConfig = (data) => fs.writeFile("./config.json", data);
 	const abort = (...args) => {
 		console.error(...args);
 		process.exit(1);
@@ -60,7 +59,7 @@
 			arguments.videoLink = arg;
 		}
 		else if (i === 3) {
-			const { zones } = require("./zone-map.json");
+			const { zones } = require(__dirname + "/zone-map.json");
 			const input = arg.toLowerCase();
 
 			const zoneDescriptor = zones.find(i => i.names.includes(input));
@@ -86,7 +85,7 @@
 	let config;
 	try {
 		debugLog("Loading config.json");
-		config = require("./config.json");
+		config = require(__dirname + "/config.json");
 	}
 	catch (e) {
 		die("config.json load error", e.message);
@@ -122,17 +121,17 @@
 		}
 
 		debugLog("Updating config.json - save file");
-		await saveConfig();
+		await fs.writeFile(__dirname + "/config.json", JSON.stringify(config, null, 4));
 	}
 
 	debugLog("Fetching video info");
 	const videoInfo = await util.promisify(ytdl.getInfo)(arguments.videoLink);
 
 	debugLog("Checking for video file");
-	const videoPath = path.resolve("./", "music", videoInfo.id + ".mp3");
+	const videoPath = path.resolve(__dirname, "music", videoInfo.id + ".mp3");
 	const videoExists = await fetchPath(videoPath);
 	if (!videoExists || arguments.force) {
-		debugLog("Ffetching video + creating audio file", videoPath);
+		debugLog("Fetching video + creating audio file", videoPath);
 		await util.promisify(ytdl.exec)(
 			arguments.videoLink,
 			[
@@ -140,7 +139,7 @@
 				"--format", "bestaudio",
 				"--restrict-filenames",
 				"--audio-format", "mp3",
-				"--output", path.resolve("./", "music", videoInfo.id) + ".%(ext)s"
+				"--output", path.resolve(__dirname, "music", videoInfo.id) + ".%(ext)s"
 			],
 			{}
 		);
@@ -182,7 +181,7 @@
 	const saveFileData = XML.xml2js(saveFileContent);
 
 	// The game only accepts forward-slash delimited paths - even on Windows
-	const forwardSlashVideoPath = path.posix.resolve("./", "music", videoInfo.id + ".mp3").replace(/\\/g, "/");
+	const forwardSlashVideoPath = videoPath.replace(/\\/g, "/");
 	const gameData = saveFileData.elements[0].elements.find(i => i.name === "game");
 
 	debugLog("Editing save file", { path: forwardSlashVideoPath, attribute: "customSong" + arguments.zone.gameIndex });
