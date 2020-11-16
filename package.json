@@ -1,0 +1,20 @@
+{
+  "name": "necrodancer-custom-music",
+  "version": "1.0.0",
+  "description": "CLI tool to add custom music to the game Crypt of the Necrodancer",
+  "main": "index.js",
+  "repository": "https://github.com/Supinic/necrodancer-custom-music",
+  "author": "Supinic <supinic@protonmail.com>",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": ">= 14.0"
+  },
+  "scripts": {
+    "init": "node init.js"
+  },
+  "dependencies": {
+    "xml-js": "^1.6.11",
+    "youtube-dl": "^3.0.2"
+  }
+}

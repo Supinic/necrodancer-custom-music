@@ -1,0 +1,157 @@
+{
+  "zones": [
+    {
+      "gameIndex": 16,
+      "names": ["lobby", "start", "0-1"],
+      "zone": 0,
+      "level": 1,
+      "dlc": false
+    },
+
+    {
+      "gameIndex": 0,
+      "names": ["1-1"],
+      "zone": 1,
+      "level": 1,
+      "dlc": false
+    },
+    {
+      "gameIndex": 1,
+      "names": ["1-2"],
+      "zone": 1,
+      "level": 2,
+      "dlc": false
+    },
+    {
+      "gameIndex": 2,
+      "names": ["1-3"],
+      "zone": 1,
+      "level": 3,
+      "dlc": false
+    },
+
+    {
+      "gameIndex": 3,
+      "names": ["2-1"],
+      "zone": 2,
+      "level": 1,
+      "dlc": false
+    },
+    {
+      "gameIndex": 4,
+      "names": ["2-2"],
+      "zone": 2,
+      "level": 2,
+      "dlc": false
+    },
+    {
+      "gameIndex": 5,
+      "names": ["2-3"],
+      "zone": 2,
+      "level": 3,
+      "dlc": false
+    },
+
+    {
+      "gameIndex": 6,
+      "names": ["3-1"],
+      "zone": 3,
+      "level": 1,
+      "dlc": false
+    },
+    {
+      "gameIndex": 7,
+      "names": ["3-2"],
+      "zone": 3,
+      "level": 2,
+      "dlc": false
+    },
+    {
+      "gameIndex": 8,
+      "names": ["3-3"],
+      "zone": 3,
+      "level": 3,
+      "dlc": false
+    },
+
+    {
+      "gameIndex": 9,
+      "names": ["4-1"],
+      "zone": 4,
+      "level": 1,
+      "dlc": false
+    },
+    {
+      "gameIndex": 10,
+      "names": ["4-2"],
+      "zone": 4,
+      "level": 2,
+      "dlc": false
+    },
+    {
+      "gameIndex": 11,
+      "names": ["4-3"],
+      "zone": 4,
+      "level": 3,
+      "dlc": false
+    },
+
+    {
+      "gameIndex": 17,
+      "names": ["5-1"],
+      "zone": 5,
+      "level": 1,
+      "dlc": true
+    },
+    {
+      "gameIndex": 18,
+      "names": ["5-2"],
+      "zone": 5,
+      "level": 2,
+      "dlc": true
+    },
+    {
+      "gameIndex": 19,
+      "names": ["5-3"],
+      "zone": 5,
+      "level": 3,
+      "dlc": true
+    },
+
+    {
+      "gameIndex": 12,
+      "names": ["king-conga", "conga", "boss-1"],
+      "zone": null,
+      "level": null,
+      "dlc": false
+    },
+    {
+      "gameIndex": 13,
+      "names": ["deep-blues", "chess", "boss-2"],
+      "zone": null,
+      "level": null,
+      "dlc": false
+    },
+    {
+      "gameIndex": 14,
+      "names": ["death-metal", "metal", "boss-3"],
+      "zone": null,
+      "level": null,
+      "dlc": false
+    },
+    {
+      "gameIndex": 15,
+      "names": ["coral-riff", "bass", "boss-4"],
+      "zone": null,
+      "level": null,
+      "dlc": false
+    },
+    {
+      "gameIndex": 20,
+      "names": ["fortissimole", "mole", "boss-5"],
+      "zone": null,
+      "level": null,
+      "dlc": true
+    }
+  ]
+}

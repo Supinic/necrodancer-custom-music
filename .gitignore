@@ -1,3 +1,7 @@
+# config
+config.json
+music*mp3
+
 # Logs
 logs
 *.log
