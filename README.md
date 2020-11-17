@@ -10,12 +10,16 @@ CLI tool used to import custom music into Crypt of the Necrodancer without being
 6) Creates a symlink for the beatmap file in `./beatmaps` <==> `(game-dir)/data/custom_music/` 
 
 Remarks:
-- audio files are stored in `./music/` 
-- beatmap files are stored in `./beatmaps`
-- since the script is using symlinks, the music can be swapped:
+- Audio files are stored in `./music/` 
+- Beatmap files are stored in `./beatmaps`
+- Since the script is using symlinks, the music can be swapped:
     - when the game is not running
     - ingame, in lobby
     - ingame, in a different level
+- On Windows, in order to create symlinks, admin rights are required. 
+Alternatively, the `SeCreateSymbolicLinkPrivilege` privilege needs to be allowed for the current user.
+More info: [StackExchange discussion](https://security.stackexchange.com/questions/10194/why-do-you-have-to-be-an-admin-to-create-a-symlink-in-windows)
+
 
 ## Module
 
