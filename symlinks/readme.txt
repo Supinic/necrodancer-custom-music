@@ -1,0 +1,1 @@
+this directory is where the script will create static symlinks to the songs

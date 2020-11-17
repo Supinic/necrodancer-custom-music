@@ -1,6 +1,8 @@
-# config
+# config + media files
 config.json
+beatmaps*txt
 music*mp3
+symlink*mp3
 
 # Logs
 logs

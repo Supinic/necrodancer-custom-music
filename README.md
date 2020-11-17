@@ -5,14 +5,25 @@ CLI tool used to import custom music into Crypt of the Necrodancer without being
 1) Downloads the provided media URL with `youtube-dl`
 2) Converts the media to `MP3` format with `ffmpeg` or any other valid converter
 3) Beat-maps the audio file with `beattracker` based on `essentia` (shipped with the game on Windows); alternatively, uses a static beats-per-minute value
-4) Edits the game's save-file (`xml`) and add the song in
+4) Edits the game's save file to add dummy symlinks - all at once (only happens when run for the first time)
+5) Creates a symlink for the music file in `./symlinks` <==> `./music`
+6) Creates a symlink for the beatmap file in `./beatmaps` <==> `(game-dir)/data/custom_music/` 
 
 Remarks:
-- audio files are stored in `./music/`; the game is directed to use them here 
-- beat map files are stored in `(game-dir)/data/custom_music/` 
-- ⚠ the file seems to be stored in the game's memory as it is running, and is re-generated whenever some actions are taken (e.g.: starting a run, changing the music settings manually, advancing to a new floor?)
+- audio files are stored in `./music/` 
+- beatmap files are stored in `./beatmaps`
+- since the script is using symlinks, the music can be swapped:
+    - when the game is not running
+    - ingame, in lobby
+    - ingame, in a different level
 
-## Usage
+## Module
+
+todo - documentation for `require/import`
+
+## CLI tool
+
+### Usage
 - clone/fork the repo
 - run `npm` or `yarn`
 - run `npm run init` or `yarn run init`
@@ -33,14 +44,14 @@ Remarks:
 If not provided, uses the default one found on Windows in `(game-dir)/data/essentia/beattracker.exe` 
 - `--debug` Enables debug logging
 
-### Zone identifiers
+## Zone identifiers
 Each song can be bound to exactly one game zone track per execution.
 The full list of identifiers can be found in `./zone-map.json`, and edited - if this is desired
 
-#### Regular zones
+### Regular zones
 These follow the identifier format `(zone)-(level)`, ranging from `1-1` through `5-3`.
 
-#### Boss zones
+### Boss zones
 Boss areas can use either of multiple identifiers:
 
 | Boss  |Full | Simple | Code  |
@@ -50,4 +61,3 @@ Boss areas can use either of multiple identifiers:
 | Death Metal      | `death-metal`  | `metal` | `boss-3` |
 | Coral Riff       | `coral-riff`   | `bass`  | `boss-4` |
 | Fortissimole     | `fortissimole` | `mole`  | `boss-5` |
-
