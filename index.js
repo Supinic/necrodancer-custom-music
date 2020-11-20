@@ -2,6 +2,7 @@
 (async function () {
 	const { fetchPath } = require(__dirname + "/lib/utils.js");
 	const { fullProcess } = require(__dirname + "/lib/index.js");
+	const helpString = "Usage: index.js (video-link) (game-zone) [--bpm=#] [--offset=#] [--force-reload] [--beat-tracker=path]";
 
 	const abort = (...args) => {
 		console.error(...args);
@@ -13,7 +14,7 @@
 		const arg = process.argv[i];
 
 		if (arg === "-h" || arg === "--help") {
-			console.log(`Usage: index.js (video-link) (game-zone) [--bpm=#] [--offset=#] [--beattracker=path] [--force-reload]`);
+			console.log(helpString);
 			process.exit(0);
 		}
 		else if (arg.includes("--bpm=")) {
@@ -45,7 +46,7 @@
 			arguments.zone = arg;
 		}
 		else {
-			console.log(`Usage: index.js (video-link) (game-zone) [--bpm=#] [--offset=#]`);
+			console.log(helpString);
 			abort(`Invalid argument provided: "${arg}"`);
 		}
 	}
@@ -87,7 +88,7 @@
 			bpm: arguments.bpm,
 			offset: arguments.offset,
 			force: arguments.force,
-			beatmapExecutable: arguments.beatmapExecutable
+			beatmapExecutable: arguments.beatmapExecutable ?? config.beatmapExecutable
 		});
 	}
 	catch (e) {
