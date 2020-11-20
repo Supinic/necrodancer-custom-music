@@ -35,6 +35,10 @@ todo - documentation for `require/import`
 - make sure to back up your game save file before proceeding - in case it needs to be rolled back
 - run script with `node ./index.js` or `./index.js` (with shebang)
 
+### Config
+- `directory` - path to Crypt of the NecroDancer install directory
+- `beatmapExecutable` - path to the beat-mapping executable (note that relevant argument has higher priority than config value)
+
 ### Arguments
 ```./index.js (video-url) (zone-id) [-h|--help] [--bpm] [--offset] [--force-reload] [--beat-tracker]```
 
