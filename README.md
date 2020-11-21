@@ -23,7 +23,122 @@ More info: [StackExchange discussion](https://security.stackexchange.com/questio
 
 ## Module
 
-todo - documentation for `require/import`
+Exported members: 
+```js
+const {
+    beatmap,
+    detectSaveFile,
+    downloadMedia,
+    fullProcess,
+    fetchPath,
+    getMediaInfo,
+    prepareZoneSymlinks,
+    resetZones,
+    SaveFileEditor
+} = require("necrodancer-custom-music");
+```
+
+#### `fullProcess {AsyncFunction}`
+Fully processes the provided link - downloads + beatmaps + saves it into the game save file into a given zone.
+	
+Arguments:
+ - `{string} options.gameDir` Game directory path.
+ - `{string} options.link` Media link path - needs to be compatible with youtube-dl.
+ - `{string} options.zone` Game zone identifier.
+ - `boolean} [options.backupSaveFile]` If true explicitly, will create backups of save file.
+ - `{boolean} [options.prepareAllSymlinks]` If false explicitly, will not attempt to create symlinks for music in all zones.
+ - `{string} [options.saveFile]` Optional full path to game's save file. If not provided, one is detected automatically.
+ - `{boolean} [options.forceDownload]` If true, the audio file will be re-downloaded even if it is present already
+ - `{boolean} [options.forceBeatmap] `If true, the audio file will be beatmapped even if the beatmap file is present already
+ - `{number} [options.bpm]` When not using auto bpm detection, this is the song's BPM measure
+ - `{number} [options.offset]` When not using auto bpm detection, this is the song's BPM shift forward in seconds
+ - `{string} [options.beatmapExecutable]` When not using auto bpm detection, this is the path to the auto-detect executable
+
+Returns:
+- nothing
+
+#### `beatmap` `{AsyncFunction}`
+Creates a beatmap file for a provided audio file and path. 
+
+Arguments: 
+- `{Object} options`
+- `{string} [options.beatmapExecutable]` Path to the beatmapping executable
+- `{string} options.fileName` Audio file name
+- `{string} options.filePath` Path to the audio file to beatmap
+- `{number} [options.bpm]` Static BPM - used when no executable is provided
+- `{number} [options.offset]` Static BPM - offset - shift forward, in seconds
+
+Returns:
+- `{Object} result`
+- `{string} result.filePath` Resulting beatmap file name 
+- `{"auto"|"manual"} result.beats` Confirmation of what BPM mapping method was used
+
+#### `detectSaveFile` `{Function}`
+Detects a save file within the game's install directory.
+
+Arguments: 
+- `{string} gameDir` Game install directory 
+
+Returns:
+- `{string|null} path` Full savefile path, or `null`, if none were found
+
+#### `downloadMedia` `{AsyncFunction}`
+Downloads the audio file based on a URL, using `youtube-dl`.
+
+Arguments: 
+- `{string} link` Media file URL
+- `{Object} options` 
+- `{string} [options.filePath]` If provided, this is the path the resulting audio file will be saved to. Determined automatically if not present. 
+- `{boolean} [options.force]` If true, the audio will be re-downloaded even if it exists already. 
+
+Returns: 
+- `{*} result` youtube-dl download result
+- `{*} info` youtube-dl get-video-info result
+- `{string|null} filePath` Result audio file path
+- `{boolean} skipped` Determines if the download was skipped
+
+#### `fetchPath {AsyncFunction}`
+Small utils method for non-throwing check if a file/directory exists.
+
+Arguments: 
+- `{string} path`
+
+Returns: 
+- `{*|null}` result of `fs.stat` if file exists; if it doesn't, `null` instead
+
+#### `getMediaInfo {AsyncFunction}`
+Simple async wrapper for `youtube-dl.getInfo`.
+
+Arguments: 
+- `{string} link` media URL
+
+Returns: 
+- `{Object} result` return value of `youtube-dl.getInfo`
+
+#### `prepareZoneSymlinks {AsyncFunction}`
+Edits the game save file, so that all zones' music will point to symlinks.
+This is so no more editing of the save files is necessary later.
+
+Arguments 
+- `{string} saveFilePath` full save file path
+
+Returns
+- nothing
+
+#### `resetZones {AsyncFunction}`
+Resets one or more zone music to "none" - the default null value in game
+	 * @param 
+	 * @param 
+
+Arguments 
+- `{string} saveFilePath` full save file path
+- `{string[]} zones` list of zones to reset. if the first value is "all", resets all zones
+
+Returns
+- nothing
+
+#### `SaveFileEditor {class}`
+Works with a single save file, and edits some of its attributes. Acts as a wrapper around the save file's XML structure.
 
 ## CLI tool
 
@@ -33,14 +148,14 @@ todo - documentation for `require/import`
 - run `npm run init` or `yarn run init`
 - edit `config.json` and fill in the `directory` property with your Crypt of the Necrodancer install directory
 - make sure to back up your game save file before proceeding - in case it needs to be rolled back
-- run script with `node ./index.js` or `./index.js` (with shebang)
+- run script with `node ./crypt.js` or `./crypt.js` (with shebang)
 
 ### Config
 - `directory` - path to Crypt of the NecroDancer install directory
 - `beatmapExecutable` - path to the beat-mapping executable (note that relevant argument has higher priority than config value)
 
 ### Arguments
-```./index.js (video-url) (zone-id) [-h|--help] [--bpm] [--offset] [--force-reload] [--beat-tracker]```
+```./crypt.js (video-url) (zone-id) [-h|--help] [--bpm] [--offset] [--force-reload] [--beat-tracker]```
 
 - `-h`, `--help` Prints a simple usage help
 - `(video-url)` First argument - media video link to be downloaded, beat-mapped and added to the game
