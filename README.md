@@ -33,6 +33,7 @@ const {
     fetchPath,
     getMediaInfo,
     prepareZoneSymlinks,
+    removeZoneSymlinks,
     resetZones,
     SaveFileEditor
 } = require("necrodancer-custom-music");
@@ -121,6 +122,15 @@ This is so no more editing of the save files is necessary later.
 
 Arguments 
 - `{string} saveFilePath` full save file path
+
+Returns
+- nothing
+
+#### `removeZoneSymlinks {AsyncFunction}`
+Removes symlinks for each provided zone.
+
+Arguments 
+- `{...string} ...zones` Zones to as a list of arguments
 
 Returns
 - nothing
