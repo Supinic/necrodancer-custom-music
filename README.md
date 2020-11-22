@@ -182,5 +182,5 @@ Boss areas can use either of multiple identifiers:
 | King Conga Kappa | `king-conga`   | `conga` | `boss-1` |
 | Deep Blues       | `deep-blues`   | `chess` | `boss-2` |
 | Death Metal      | `death-metal`  | `metal` | `boss-3` |
-| Coral Riff       | `coral-riff`   | `bass`  | `boss-4` |
+| Coral Riff       | `coral-riff`   | `coral` | `boss-4` |
 | Fortissimole     | `fortissimole` | `mole`  | `boss-5` |
